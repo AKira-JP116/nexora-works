@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nexora Works｜EC販売者・小規模事業者のためのAI業務自動化</title>
+<meta name="description" content="毎日の手作業を「貼るだけ・押すだけ」に。EC利益計算・価格監視・見積書PDF・CSV集計など、業務自動化ツールを35,000円〜で制作。納品後1週間の無償調整・月額保守付き。">
+<style>
+  :root {
+    --navy: #0b1026; --navy2: #111735; --teal: #5eead4; --teal-d: #2dd4bf;
+    --purple: #a78bfa; --sky: #7dd3fc; --text: #e2e8f0; --muted: #94a3b8;
+    --card: rgba(255,255,255,0.05); --border: rgba(125,211,252,0.25);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: "Hiragino Kaku Gothic ProN","Hiragino Sans",sans-serif;
+    background: var(--navy); color: var(--text); line-height: 1.8; }
+  .aurora { position: fixed; pointer-events: none; z-index: 0; }
+  .a1 { top: -200px; left: -150px; width: 800px; height: 600px;
+    background: radial-gradient(ellipse, rgba(45,212,191,0.25) 0%, transparent 65%); }
+  .a2 { top: 30%; right: -250px; width: 900px; height: 700px;
+    background: radial-gradient(ellipse, rgba(139,92,246,0.22) 0%, transparent 65%); }
+  main, header, footer { position: relative; z-index: 1; }
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+  header { padding: 24px 0; }
+  .logo { font-size: 20px; font-weight: 700; letter-spacing: 4px; color: var(--sky); }
+  .logo span { color: var(--purple); }
+  .hero { padding: 72px 0 88px; text-align: center; }
+  .hero h1 { font-size: clamp(30px, 5.5vw, 52px); font-weight: 800; line-height: 1.5; }
+  .hero h1 .em { color: var(--teal); }
+  .hero p.lead { margin-top: 24px; font-size: clamp(16px, 2.4vw, 20px); color: var(--muted); }
+  .cta { display: inline-block; margin-top: 40px; background: linear-gradient(90deg, var(--teal-d), var(--sky));
+    color: #06202b; font-weight: 800; font-size: 18px; padding: 18px 48px; border-radius: 999px;
+    text-decoration: none; box-shadow: 0 8px 30px rgba(45,212,191,0.35); }
+  .cta:hover { opacity: 0.9; }
+  .cta-sub { display: block; margin-top: 14px; font-size: 13px; color: var(--muted); }
+  section { padding: 72px 0; }
+  h2 { font-size: clamp(24px, 3.6vw, 32px); font-weight: 800; text-align: center; margin-bottom: 12px; }
+  .h2sub { text-align: center; color: var(--muted); margin-bottom: 48px; font-size: 15px; }
+  .grid { display: grid; gap: 20px; }
+  .g3 { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+  .g2 { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 18px; padding: 28px; }
+  .card h3 { font-size: 19px; margin-bottom: 10px; color: #fff; }
+  .card p { font-size: 14.5px; color: var(--muted); }
+  .pain { text-align: center; font-size: 16px; }
+  .price-tag { margin-top: 16px; font-size: 22px; font-weight: 800; color: #fef3c7; }
+  .price-tag small { font-size: 13px; color: var(--muted); font-weight: 500; }
+  .badge { display: inline-block; background: rgba(94,234,212,0.12); color: var(--teal);
+    border: 1px solid rgba(94,234,212,0.4); font-size: 12px; font-weight: 700;
+    padding: 3px 12px; border-radius: 999px; margin-bottom: 14px; }
+  ul.feat { list-style: none; margin-top: 14px; }
+  ul.feat li { font-size: 14px; color: var(--text); padding: 5px 0 5px 26px; position: relative; }
+  ul.feat li::before { content: "✓"; position: absolute; left: 0; color: var(--teal); font-weight: 800; }
+  .menu-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+  .menu-item { background: var(--card); border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px; padding: 14px 18px; font-size: 14px; }
+  .menu-item b { color: #fff; }
+  .menu-item span { color: var(--muted); font-size: 12.5px; display: block; }
+  .flow { counter-reset: step; }
+  .flow .card { position: relative; padding-left: 76px; margin-bottom: 14px; }
+  .flow .card::before { counter-increment: step; content: counter(step);
+    position: absolute; left: 24px; top: 26px; width: 34px; height: 34px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--teal-d), var(--purple)); color: #06202b;
+    font-weight: 800; display: flex; align-items: center; justify-content: center; }
+  .faq .card { margin-bottom: 14px; }
+  .faq .q { font-weight: 700; color: #fff; margin-bottom: 6px; }
+  .faq .q::before { content: "Q. "; color: var(--teal); }
+  .faq .a { font-size: 14.5px; color: var(--muted); }
+  .faq .a::before { content: "A. "; color: var(--purple); font-weight: 700; }
+  .about table { width: 100%; border-collapse: collapse; font-size: 15px; }
+  .about th, .about td { text-align: left; padding: 14px 10px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .about th { color: var(--muted); font-weight: 600; width: 130px; }
+  .final { text-align: center; background: var(--navy2); border-radius: 24px; padding: 64px 24px; }
+  footer { padding: 40px 0; text-align: center; color: var(--muted); font-size: 13px; }
+  a.mail { color: var(--sky); }
+</style>
+</head>
+<body>
+<div class="aurora a1"></div><div class="aurora a2"></div>
+
+<header><div class="container"><div class="logo">NEXORA <span>WORKS</span></div></div></header>
+
+<main>
+  <div class="hero container">
+    <h1>毎日の手作業を、<br><span class="em">「貼るだけ・押すだけ」</span>に。</h1>
+    <p class="lead">EC販売者・小規模事業者のためのAI業務自動化ツール制作<br>
+    利益計算・価格監視・見積書作成・データ集計を、あなた専用のツールで自動化します。</p>
+    <a class="cta" href="mailto:nexora.works.lab@gmail.com?subject=%E7%84%A1%E6%96%99%E8%A8%BA%E6%96%AD%E5%B8%8C%E6%9C%9B&body=%E4%BB%A5%E4%B8%8B%E3%82%92%E3%81%94%E8%A8%98%E5%85%A5%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84%E3%80%82%0A%0A%E2%91%A0%E3%81%8A%E5%9B%B0%E3%82%8A%E3%81%AE%E4%BD%9C%E6%A5%AD%EF%BC%9A%0A%E2%91%A1%E7%8F%BE%E5%9C%A8%E3%81%AE%E3%82%84%E3%82%8A%E6%96%B9%EF%BC%88Excel%E3%81%AA%E3%81%A9%EF%BC%89%EF%BC%9A%0A%E2%91%A2%E3%81%8A%E6%80%A5%E3%81%8E%E5%BA%A6%EF%BC%9A">メールで無料診断を依頼する</a>
+    <span class="cta-sub">「自分の場合は自動化できる？」の段階でOK。24時間以内にご回答します。</span>
+  </div>
+
+  <section>
+    <div class="container">
+      <h2>こんな作業、毎日続けていませんか？</h2>
+      <p class="h2sub">その1時間は、ツールなら数秒で終わります。</p>
+      <div class="grid g3">
+        <div class="card pain">売上の利益計算を<br><b>Excelに手入力で1時間</b></div>
+        <div class="card pain">見積書・請求書の作成に<br><b>1通30分〜1時間</b></div>
+        <div class="card pain">毎月のCSV集計・報告書に<br><b>丸半日</b></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <h2>主力サービス</h2>
+      <p class="h2sub">初期制作費＋月額保守のシンプルな料金体系。追加費用は必ず事前にご相談します。</p>
+      <div class="grid g2">
+        <div class="card">
+          <span class="badge">EC販売者向け</span>
+          <h3>利益自動計算ツール</h3>
+          <p>売上CSVを貼り付けるだけで、手数料・原価・送料を差し引いた利益を自動計算。Amazon・メルカリ・楽天対応。</p>
+          <ul class="feat">
+            <li>商品別・日別・月別の利益を自動集計</li>
+            <li>赤字商品の自動検出・色付け</li>
+            <li>Excel／Webツール形式を選択可</li>
+          </ul>
+          <div class="price-tag">35,000円〜 <small>／ 月額保守 10,000円</small></div>
+        </div>
+        <div class="card">
+          <span class="badge">建設・リフォーム・制作業向け</span>
+          <h3>見積書・請求書PDF自動作成</h3>
+          <p>項目を選んで数量を入れるだけで、社判・ロゴ入りのPDFがワンクリックで完成。既存のExcel書式をそのまま移行できます。</p>
+          <ul class="feat">
+            <li>金額・消費税の自動計算</li>
+            <li>見積書→請求書へ自動変換</li>
+            <li>インボイス（適格請求書）対応</li>
+          </ul>
+          <div class="price-tag">30,000円〜 <small>／ 月額保守 5,000円</small></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <h2>その他の自動化メニュー</h2>
+      <p class="h2sub">「毎回同じことをしている作業」は、ほとんどツール化できます。</p>
+      <div class="menu-list">
+        <div class="menu-item"><b>価格監視ツール</b><span>競合の価格変動を自動チェック＆通知</span></div>
+        <div class="menu-item"><b>CSV集計自動化</b><span>複数CSVを自動で結合・集計・レポート化</span></div>
+        <div class="menu-item"><b>予約フォーム通知</b><span>予約→LINE/メールへ自動でリマインド</span></div>
+        <div class="menu-item"><b>問い合わせ返信文生成</b><span>AIがトーン統一した返信文案を作成</span></div>
+        <div class="menu-item"><b>業務レポート自動作成</b><span>週次・月次レポートを自動生成・送信</span></div>
+        <div class="menu-item"><b>LINE通知自動化</b><span>在庫・売上・予約の変化を自動通知</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <h2>ご依頼の流れ</h2>
+      <p class="h2sub">ヒアリングから納品まで、最短1週間。</p>
+      <div class="flow">
+        <div class="card"><h3>無料診断・ヒアリング</h3><p>現在の作業内容を10分ほどお聞きし、自動化できる範囲を無料でご回答します。</p></div>
+        <div class="card"><h3>お見積り</h3><p>24時間以内に金額と納期をご提示。ご納得いただいてから着手します。</p></div>
+        <div class="card"><h3>制作（5〜10営業日）</h3><p>あなたの業務に合わせたオーダーメイドで制作します。</p></div>
+        <div class="card"><h3>納品・使い方説明</h3><p>説明書付きで納品。納品後1週間は無償で調整します。</p></div>
+        <div class="card"><h3>月額保守（任意）</h3><p>仕様変更・手数料率の変更・不具合に継続対応。いつでも解約可能です。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container faq">
+      <h2>よくある質問</h2>
+      <p class="h2sub"></p>
+      <div class="card"><div class="q">パソコンが苦手でも使えますか？</div><div class="a">「貼るだけ・押すだけ」の設計にするため、Excelやブラウザが開ければ使えます。操作説明書もお付けします。</div></div>
+      <div class="card"><div class="q">料金はどのように決まりますか？</div><div class="a">初期制作費（30,000円〜）＋任意の月額保守です。要件が基本料金を超える場合は必ず事前にご相談し、勝手に追加費用が発生することはありません。</div></div>
+      <div class="card"><div class="q">対応環境は？</div><div class="a">Windows / Mac 両対応。Excel・スプレッドシート形式、ブラウザで動くWebツール形式からお選びいただけます。</div></div>
+      <div class="card"><div class="q">相談だけでも大丈夫ですか？</div><div class="a">大歓迎です。「自分の場合は自動化できる？」という段階のメール1通からどうぞ。診断・お見積りは無料です。</div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container about">
+      <h2>運営者情報</h2>
+      <p class="h2sub"></p>
+      <div class="card">
+        <table>
+          <tr><th>屋号</th><td>Nexora Works（ネクソラワークス）</td></tr>
+          <tr><th>事業内容</th><td>業務自動化ツールの企画・開発・保守／AI活用支援</td></tr>
+          <tr><th>連絡先</th><td><a class="mail" href="mailto:nexora.works.lab@gmail.com">nexora.works.lab@gmail.com</a></td></tr>
+          <tr><th>実績</th><td>EC仕入れリサーチツール、価格チェックツール、データ集計自動化など複数の自社ツールを開発・運用</td></tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="final">
+        <h2>まずは、無料診断から。</h2>
+        <p class="h2sub">お困りの作業を1行書いて送るだけ。24時間以内に「自動化できるか」をお答えします。</p>
+        <a class="cta" href="mailto:nexora.works.lab@gmail.com?subject=%E7%84%A1%E6%96%99%E8%A8%BA%E6%96%AD%E5%B8%8C%E6%9C%9B&body=%E4%BB%A5%E4%B8%8B%E3%82%92%E3%81%94%E8%A8%98%E5%85%A5%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84%E3%80%82%0A%0A%E2%91%A0%E3%81%8A%E5%9B%B0%E3%82%8A%E3%81%AE%E4%BD%9C%E6%A5%AD%EF%BC%9A%0A%E2%91%A1%E7%8F%BE%E5%9C%A8%E3%81%AE%E3%82%84%E3%82%8A%E6%96%B9%EF%BC%88Excel%E3%81%AA%E3%81%A9%EF%BC%89%EF%BC%9A%0A%E2%91%A2%E3%81%8A%E6%80%A5%E3%81%8E%E5%BA%A6%EF%BC%9A">メールで無料診断を依頼する</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="container">© 2026 Nexora Works</div></footer>
+</body>
+</html>
